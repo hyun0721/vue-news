@@ -26,3 +26,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Vue Router
 npm install vue-router@4
+
+
+## Install Library 
+npm install axios
