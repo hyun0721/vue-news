@@ -10,7 +10,8 @@ import JobsView from "@/views/JobsView.vue";
 const base_url = 'myProject';
 
 const routes = [
-    { path: `/`, redirect: `/${base_url}/home` },
+    { path: `/`                 , redirect: { name: 'home' } },
+    { path: `/${base_url}`      , redirect: { name: 'home' } },
 
     { path: `/${base_url}/home` , name: 'home'   , component: HomePage },
     { path: `/${base_url}/news` , name: 'news'   , component: NewsView  },
@@ -31,7 +32,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 });
-
 
 
 export { router };
