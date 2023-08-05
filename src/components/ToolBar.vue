@@ -1,8 +1,8 @@
 <template lang="">
     <div class="header">
-        <router-link to="/news">News</router-link> |
-        <router-link to="/ask">Ask</router-link> |
-        <router-link to="/jobs">Jobs</router-link>
+        <router-link :to="{ name : 'news' }" >News</router-link> |
+        <router-link :to="{ name : 'ask' }" >Ask</router-link> |
+        <router-link :to="{ name : 'jobs' }" >Jobs</router-link>
     </div>
 </template>
 
