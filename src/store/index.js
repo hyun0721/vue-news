@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
-import { fetchNewsList } from '@/api/index.js';
+
+import mutation from '@/store/mutation.js';
+import actions from '@/store/actions.js';
 
 export const store = createStore({
 
@@ -12,26 +14,20 @@ export const store = createStore({
      */
 
     state: {
-        news: []
+        news: [],
+        askList: [],
+        jobList: []
     },
 
-    mutations: {
-        SET_NEWS(state, news) {
-            state.news = news;
-        }
+
+    getters: {
+        fetchedAsk(state) { return state.askList ; } 
     },
 
-    actions: {
-        FETCH_NEWS(context) {
-            fetchNewsList()
-                .then( response => {
-                    context.commit('SET_NEWS', response.data);
-                })
-                .catch( error => {
-                    console.log(error);
-                    
-                })
-        }
-    }
+
+    mutations: mutation,
+
+
+    actions: actions
 
 });

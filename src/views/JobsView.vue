@@ -1,30 +1,19 @@
 <template lang="">
-    <div v-for="item in jobsList" v-bind:key="item">
+    <div v-for="item in this.$store.state.jobList" v-bind:key="item">
         {{ item.title }}
     </div>
 </template>
+
 <script>
 
-import { fetchJobsList } from '@/api/index.js'
-
 export default {
-
-    data() {
-        return {
-            jobsList: []
-        }
-    },
-
     created() {
-        const vm = this;
-
-        fetchJobsList()
-            .then( res => vm.jobsList = res.data)
-            .catch( err => console.log(err) )
-    }
-    
+        this.$store.dispatch('FETCH_JOBS');
+    }    
 }
+
 </script>
+
 <style lang="">
     
 </style>
