@@ -1,7 +1,10 @@
 <template lang="">
-    <div v-for="item in askItems" v-bind:key="item">
-        {{ item.title }}
-    </div>
+    <p v-for="item in askItems" v-bind:key="item">
+        <a :href="item.url" >
+            {{ item.title }}
+        </a>
+        <small> {{  item.time_ago }} {{ item.user }}</small>
+    </p>
 </template>
 
 <script>
