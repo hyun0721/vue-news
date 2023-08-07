@@ -10,6 +10,10 @@ export default {
 
     SET_JOBS(state, jobs){
         state.jobList = jobs;
+    },
+
+    SET_USER(state, users){
+        state.userInfo = users;
     }
     
 }

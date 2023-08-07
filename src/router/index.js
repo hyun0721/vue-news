@@ -4,8 +4,8 @@ import HomePage from "@/views/HomePage.vue";
 import NewsView from "@/views/NewsView.vue";
 import AskView from "@/views/AskView.vue";
 import JobsView from "@/views/JobsView.vue";
+import UserView from "@/views/UserView.vue";
 // import ItemView from "@/views/ItemView.vue";
-// import UserView from "@/views/UserView.vue"
 
 const base_url = 'myProject';
 
@@ -17,6 +17,8 @@ const routes = [
     { path: `/${base_url}/news` , name: 'news'   , component: NewsView  },
     { path: `/${base_url}/ask`  , name: 'ask'    , component: AskView   },
     { path: `/${base_url}/jobs` , name: 'jobs'   , component: JobsView  },
+    
+    { path: `/${base_url}/user/:id` , name: 'user'   , component: UserView  },
 ];
 
 // const routes = [

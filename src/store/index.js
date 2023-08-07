@@ -16,12 +16,14 @@ export const store = createStore({
     state: {
         news: [],
         askList: [],
-        jobList: []
+        jobList: [],
+        userInfo: [],
     },
 
 
     getters: {
-        fetchedAsk(state) { return state.askList ; } 
+        fetchedAsk(state) { return state.askList ; } ,
+        fetchedUser(state) { return state.userInfo ; } 
     },
 
 
