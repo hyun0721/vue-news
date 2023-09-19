@@ -5,7 +5,7 @@ import NewsView from "@/views/NewsView.vue";
 import AskView from "@/views/AskView.vue";
 import JobsView from "@/views/JobsView.vue";
 import UserView from "@/views/UserView.vue";
-// import ItemView from "@/views/ItemView.vue";
+import ItemView from "@/views/ItemView.vue";
 
 const base_url = 'myProject';
 
@@ -19,16 +19,8 @@ const routes = [
     { path: `/${base_url}/jobs` , name: 'jobs'   , component: JobsView  },
     
     { path: `/${base_url}/user/:id` , name: 'user'   , component: UserView  },
+    { path: `/${base_url}/item/:id` , name: 'item'   , component: ItemView  },
 ];
-
-// const routes = [
-//     { path: "/", redirect: `/news`, component: HomePage },
-//     { path: `/news` , component: NewsView },
-//     { path: `/ask` , component: AskView },
-//     { path: `/jobs` , component: JobsView },
-//     { path: `/Item` , component: ItemView },
-//     { path: `/User` , component: UserView },
-// ];
 
 const router = createRouter({
     history: createWebHistory(),

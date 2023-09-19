@@ -1,9 +1,15 @@
 <template lang="">
-    <p v-for="item in askItems" v-bind:key="item">
-        <a :href="item.url" >
+    <p v-for="item in fetchedAsk" v-bind:key="item">
+        <!-- <a :href="item.url" >
             {{ item.title }}
-        </a>
-        <small> {{  item.time_ago }} {{ item.user }}</small>
+        </a> -->
+        <router-link :to="{ name: 'item', params: { id: item.id } }"> 
+            {{ item.title }}
+        </router-link>
+        <small>
+            {{ item.time_ago }} 
+            by {{ item.user }}
+        </small>
     </p>
 </template>
 
@@ -13,9 +19,9 @@ import { mapGetters } from 'vuex';
 export default {
 
     computed: {
-        ...mapGetters({
-            askItems : 'fetchedAsk'
-        })
+        ...mapGetters([
+            'fetchedAsk'
+        ])
     },
 
     created() {

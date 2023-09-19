@@ -19,3 +19,7 @@ export const fetchJobsList = () => {
 export const fetchUserInfo = (userName) => {
     return axios.get((`${config.baseUrl}user/${userName}.json`));
 }
+
+export const fetchCommentItem = (id) => {
+    return axios.get((`${config.baseUrl}item/${id}.json`));
+}
