@@ -23,8 +23,9 @@ export const store = createStore({
 
 
     getters: {
-        fetchedAsk(state) { return state.askList ; } ,
-        fetchedUser(state) { return state.userInfo ; } 
+        fetchedAsk(state) { return state.askList; } ,
+        fetchedUser(state) { return state.userInfo; } ,
+        fetchedItem(state) { return state.itemInfo; } , 
     },
 
 
