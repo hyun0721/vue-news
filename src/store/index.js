@@ -23,6 +23,7 @@ export const store = createStore({
 
 
     getters: {
+        fetchedNews(state) { return state.news; } ,
         fetchedAsk(state) { return state.askList; } ,
         fetchedUser(state) { return state.userInfo; } ,
         fetchedItem(state) { return state.itemInfo; } , 
