@@ -1,21 +1,35 @@
 <template>
     <div>
         <ul class="news-list">
-            <li class="post" v-for="item in this.$store.state.news" v-bind:key="item">
+            <li class="post" v-for="item in listItems" v-bind:key="item">
                 <div class="points">
-                    {{ item.points }}
+                    {{ item.points || "0" }}
                 </div>
                 <div>
                     <p class="news-title">
-                        <a v-bind:href="item.url" >
-                            {{ item.title }}
-                        </a>
+                        <template v-if="item.domain">
+                            <a v-bind:href="item.url" >
+                                {{ item.title }}
+                            </a>
+                        </template>
+                        <template v-else>
+                            <router-link :to="`item/${item.id}`"> 
+                                {{ item.title }}
+                            </router-link>
+                        </template>
                     </p>
                     <small class="link-text">
                         {{ item.time_ago }} by 
-                        <!-- <router-link class="link-text" :to="{ name: 'user', params: { id: item.user } }">  -->
+                        <router-link
+                            class="link-text"
+                            :to="`user/${item.user}`"
+                            v-if="item.user"
+                            > 
                             {{ item.user }} 
-                        <!-- </router-link> -->
+                        </router-link>
+                        <a :href="item.url" v-else>
+                            {{  item.domain }}
+                        </a>
                     </small>
                 </div>
             </li>
@@ -26,8 +40,38 @@
 <script>
 export default {
     created() {
-        this.$store.dispatch('FETCH_NEWS');
+        const name = this.$route.name;
+        let api = '';
+        
+        switch(name){
+
+            case 'news' : api = 'FETCH_NEWS';
+                break;
+            case 'ask' : api = 'FETCH_ASK';
+                break;
+            case 'jobs' : api = 'FETCH_JOBS';
+                break;
+        }
+
+        this.$store.dispatch(api);
+    },
+
+    computed: {
+        listItems() {
+            const name = this.$route.name;
+        
+            switch(name){
+
+                case 'news' : return this.$store.state.news;
+                case 'ask'  : return this.$store.state.askList;
+                case 'jobs' : return this.$store.state.jobList;
+            }
+
+            return '';
+        }
     }
+
+
 }
 </script>
 
