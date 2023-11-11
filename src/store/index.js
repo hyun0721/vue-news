@@ -21,17 +21,15 @@ export const store = createStore({
         itemInfo: [],
     },
 
-
     getters: {
         fetchedNews(state) { return state.news; } ,
         fetchedAsk(state) { return state.askList; } ,
+        fetchedJobs(state) { return state.jobList; } ,
         fetchedUser(state) { return state.userInfo; } ,
         fetchedItem(state) { return state.itemInfo; } , 
     },
 
-
     mutations: mutation,
-
 
     actions: actions
 

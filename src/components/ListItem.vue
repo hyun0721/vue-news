@@ -1,21 +1,16 @@
 <template>
     <div>
         <ul class="news-list">
-            <li class="post" v-for="item in this.$store.state.news" v-bind:key="item">
+            <li class="post" v-for="item in props.data" v-bind:key="item">
                 <div class="points">
-                    {{ item.points }}
+                    {{ item.points || "0"}}
                 </div>
                 <div>
                     <p class="news-title">
-                        <a v-bind:href="item.url" >
-                            {{ item.title }}
-                        </a>
+                        <slot name="title" :item="item"></slot>
                     </p>
                     <small class="link-text">
-                        {{ item.time_ago }} by 
-                        <!-- <router-link class="link-text" :to="{ name: 'user', params: { id: item.user } }">  -->
-                            {{ item.user }} 
-                        <!-- </router-link> -->
+                        <slot name="info" :item="item"></slot>
                     </small>
                 </div>
             </li>
@@ -23,15 +18,17 @@
     </div>
 </template>
 
-<script>
-export default {
-    created() {
-        this.$store.dispatch('FETCH_NEWS');
-    }
-}
+<script setup>
+
+import { defineProps } from 'vue';
+
+const props = defineProps({
+    data: Array
+});
+
 </script>
 
-<style scoped>
+<style>
 a {
     color: #34495e;
     text-decoration: none;  /* 라우터링크의 텍스트 밑줄 효과제거 */
@@ -72,6 +69,6 @@ a.router-link-exact-active {
 }
 
 .link-text {
-    color: gray;
+    color: gray; 
 }
 </style>
