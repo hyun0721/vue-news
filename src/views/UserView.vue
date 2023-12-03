@@ -1,16 +1,21 @@
 <template lang="">
     <div>
-        <!-- <p>name : {{ userInfo.id }}</p>
-        <p>karma : {{ userInfo.karma }}</p>
-        <p>created : {{ userInfo.created }}</p> -->
-        <UserProfile></UserProfile>
+        <UserProfile :info="userInfo">
+            <template #username> {{ userInfo.id }} </template>
+            <template #time>
+                <span>
+                    {{ 'Joined ' + userInfo.created }}  , 
+                </span>
+            </template>
+            <template #karma> {{ userInfo.karma }} </template>
+        </UserProfile>
     </div>
 </template>
 
 <script>
 
 import UserProfile from '../components/UserProfile.vue'
-// import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
 
@@ -18,11 +23,11 @@ export default {
         UserProfile
     },
 
-    // computed: {
-    //     ...mapGetters({
-    //         userInfo : 'fetchedUser'
-    //     })
-    // },
+    computed: {
+        ...mapGetters({
+            userInfo : 'fetchedUser'
+        })
+    },
 
     created() {
         this.$store.dispatch('FETCH_USER', this.$route.params.id);

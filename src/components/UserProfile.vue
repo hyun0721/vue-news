@@ -1,35 +1,28 @@
 <template>
     <div>
         <section>
-            <!-- 질문 상세 정보 -->
+            <!-- 사용자정보 -->
             <div>
                 <div>
-                    User
+                    [User Info]
                 </div>
                 <div>
-                    {{ userInfo.id }}
+                    <slot name="username"></slot>
                 </div>
-                <div>
-                    {{ userInfo.created }}
+                <div class="time">
+                    <slot name="time"></slot>
+                    <slot name="karma"></slot>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <!-- 질문 댓글-->
-            <!-- <div v-html="fetchedItem.content"></div> -->
         </section>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
-    computed: {
-        ...mapGetters({
-            userInfo : 'fetchedUser'
-        })
+    props: {
+        info: Object
     },
 }
 </script>

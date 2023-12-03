@@ -17,8 +17,8 @@ export const store = createStore({
         news: [],
         askList: [],
         jobList: [],
-        userInfo: [],
-        itemInfo: [],
+        userInfo: {},
+        itemInfo: {},
     },
 
 

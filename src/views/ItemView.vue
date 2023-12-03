@@ -1,22 +1,20 @@
 <template>
     <div>
         <section>
-            <!-- 질문 상세 정보 -->
-            <div>
-                <div>
-                    User
-                </div>
-                <div>
-                    <!-- <router-link :to="`/user/${fetchedItem.user}`"> -->
-                    <router-link :to="{ name: 'user', params: { id: fetchedItem.user } }"> 
+            <UserProfile :info="fetchedItem">
+                <template #username>
+                    {{ username }}
+                    <!-- <router-link :to="`/myProject/user/${fetchedItem.user}`"> -->
+                    <router-link :to="{name: 'user', params: {id: fetchedItem.user} }">
                         {{ fetchedItem.user }}
-                    </router-link>
-                    <div>
-                        {{ fetchedItem.time_ago }}
-                    </div>
-                </div>
-                <h2> {{ fetchedItem.title }}</h2>
-            </div>
+                    </router-link> 
+                </template>
+                <template #time> {{ 'Posted ' + fetchedItem.time_ago }}</template>
+            </UserProfile>
+        </section>
+
+        <section>
+            <h2> {{ fetchedItem.title }}</h2>
         </section>
 
         <section>
@@ -27,10 +25,14 @@
 </template>
 
 <script>
-
+import UserProfile from '@/components/UserProfile.vue';
 import { mapGetters } from 'vuex';
 
 export default {
+
+    components: {
+        UserProfile
+    },
 
     computed: {
         ...mapGetters([
@@ -40,7 +42,6 @@ export default {
 
     created() {
         const itemId = this.$route.params.id;
-        // console.log(itemId);
 
         this.$store.dispatch('FETCH_ITEM', itemId);
     }
