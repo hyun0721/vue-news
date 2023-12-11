@@ -39,29 +39,11 @@
 
 <script>
 export default {
-    created() {
-        const name = this.$route.name;
-        let api = '';
-        
-        switch(name){
-
-            case 'news' : api = 'FETCH_NEWS';
-                break;
-            case 'ask' : api = 'FETCH_ASK';
-                break;
-            case 'jobs' : api = 'FETCH_JOBS';
-                break;
-        }
-
-        this.$store.dispatch(api);
-    },
-
     computed: {
         listItems() {
             const name = this.$route.name;
         
             switch(name){
-
                 case 'news' : return this.$store.state.news;
                 case 'ask'  : return this.$store.state.askList;
                 case 'jobs' : return this.$store.state.jobList;
@@ -70,8 +52,6 @@ export default {
             return '';
         }
     }
-
-
 }
 </script>
 
