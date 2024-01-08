@@ -18,5 +18,9 @@ export default {
 
     SET_ITEM(state, items){
         state.itemInfo = items;
-    }
+    },
+
+    SET_LIST(state, list){
+        state.list = list;
+    },
 }

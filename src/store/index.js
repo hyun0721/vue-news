@@ -19,6 +19,7 @@ export const store = createStore({
         jobList: [],
         userInfo: {},
         itemInfo: {},
+        list: [],
     },
 
 
