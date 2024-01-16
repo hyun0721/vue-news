@@ -9,7 +9,6 @@
 <script>
 import ToolBar from '@/components/ToolBar.vue';
 import MySpinner from '@/components/MySpinner.vue';
-import bus from '@/utils/bus.js'
 
 export default {
   name: 'App',
@@ -21,22 +20,6 @@ export default {
     return {
       loadingStatus: false
     }
-  },
-  methods: {
-    startSpinner() {
-      this.loadingStatus = true;
-    },
-    endSpinner() {
-      this.loadingStatus = false;
-    }
-  },
-  created() {
-    bus.$on('start:spinner', this.startSpinner);
-    bus.$on('end:spinner', this.endSpinner);
-  },
-  beforeUnmount() {
-    bus.$off('start:spinner', this.startSpinner);
-    bus.$off('end:spinner', this.endSpinner);
   },
 }
 

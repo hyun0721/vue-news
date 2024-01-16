@@ -11,11 +11,22 @@
 
 <script>
 export default {
-    props: {
-        loading: {
-            type: Boolean,
-            required: true,
+    data() {
+        return {
+            loading : false
+        }
+    },    
+    methods: {
+        StartSpinner() {
+            this.loading = true;
         },
+        FinishSpinner() {
+            this.loading = false;
+        },
+    },
+    created() {
+        this.emitter.on('startSpinner', this.StartSpinner);
+        this.emitter.on('finishSpinner', this.FinishSpinner);
     },
 }
 </script>
