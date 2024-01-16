@@ -6,7 +6,7 @@ import HomePage from "@/views/HomePage.vue";
 // import JobsView from "@/views/JobsView.vue";
 import UserView from "@/views/UserView.vue";
 import ItemView from "@/views/ItemView.vue";
-import createListView from "@/views/CreateListView";
+import createListView from "@/views/CreateListView.js";
 
 const base_url = 'myProject';
 

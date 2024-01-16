@@ -1,14 +1,18 @@
 import ListView from './ListView.vue';
+import { h } from 'vue';
 
 export default function createListView (name) {
     return {
         name: name,
         created() {
-            this.$store.dispatch('FETCH_LIST', this.$store.name);
+            this.emitter.emit('startSpinner', {});
+
+            this.$store.dispatch('FETCH_LIST', this.$route.name)
+                        .then(() => { this.emitter.emit('finishSpinner', {}) } )
+                        .catch(err => { console.log(err); });
         },
-        render(createElement){
-            return createElement(ListView);
-            // return createElement();
+        render(){
+            return h(ListView);
         }
     }
 }
