@@ -6,19 +6,13 @@
 
 <script>
 import ListItem from '../components/ListItem.vue';
+import ListMixin from '..//mixins/ListMixin.js';
 
 export default {
     components: {
         ListItem,
     },
-    created() {
-        this.emitter.emit('startSpinner', {});
-        
-        setTimeout(() => {
-            this.$store.dispatch('FETCH_NEWS');
-            this.emitter.emit('finishSpinner', {});
-        }, 3000);
-    },
+    mixins: [ListMixin],
 }
 </script>
 
