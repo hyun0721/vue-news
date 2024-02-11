@@ -7,9 +7,11 @@ export default function createListView (name) {
         created() {
             this.emitter.emit('startSpinner', {});
 
-            this.$store.dispatch('FETCH_LIST', this.$route.name)
-                        .then(() => { this.emitter.emit('finishSpinner', {}) } )
-                        .catch(err => { console.log(err); });
+            setTimeout(() => {
+                this.$store.dispatch('FETCH_LIST', this.$route.name)
+                .then(() => { this.emitter.emit('finishSpinner', {}) } )
+                .catch(err => { console.log(err); });
+            }, 3000);
         },
         render(){
             return h(ListView);

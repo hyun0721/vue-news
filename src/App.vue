@@ -3,7 +3,7 @@
   <transition name="page">
     <router-view></router-view>
   </transition>  
-  <MySpinner :loading="this.loadingStatus"></MySpinner>
+  <MySpinner></MySpinner>
 </template>
 
 <script>
@@ -15,11 +15,6 @@ export default {
   components: {
     ToolBar,
     MySpinner
-  },
-  data() {
-    return {
-      loadingStatus: false
-    }
   },
 }
 
