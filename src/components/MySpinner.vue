@@ -18,9 +18,11 @@ export default {
     },    
     methods: {
         StartSpinner() {
+            console.log('start spinner...');
             this.loading = true;
         },
         FinishSpinner() {
+            console.log('finish spinner...');
             this.loading = false;
         },
     },
