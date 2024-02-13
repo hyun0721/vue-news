@@ -9,7 +9,7 @@ import {
 
 export default {
     FETCH_NEWS(context) {
-        fetchNewsList()
+        return fetchNewsList()
             .then((response) => {
                 context.commit("SET_NEWS", response.data);
             })
@@ -19,7 +19,7 @@ export default {
     },
 
     FETCH_ASK(context) {
-        fetchAskList()
+        return fetchAskList()
             .then((response) => {
                 context.commit("SET_ASK", response.data);
             })
@@ -29,7 +29,7 @@ export default {
     },
 
     FETCH_JOBS(context) {
-        fetchJobsList()
+        return fetchJobsList()
             .then((response) => {
                 context.commit("SET_JOBS", response.data);
             })
@@ -39,7 +39,7 @@ export default {
     },
 
     FETCH_USER({ commit }, name) {
-        fetchUserInfo(name)
+        return fetchUserInfo(name)
             .then((response) => {
                 commit("SET_USER", response.data);
             })
@@ -49,7 +49,7 @@ export default {
     },
 
     FETCH_ITEM({ commit }, id) {
-        fetchCommentItem(id)
+        return fetchCommentItem(id)
             .then((response) => {
                 commit("SET_ITEM", response.data);
             })
@@ -59,9 +59,10 @@ export default {
     },
 
     FETCH_LIST({ commit }, pageName) {
-        fetchList(pageName)
+        return fetchList(pageName)
             .then((res) => {
                 commit("SET_LIST", res.data);
+                return res;
             })
             .catch((error) => {
                 console.log(error);
